@@ -1,20 +1,29 @@
 import { NavLink } from "react-router-dom";
+import "./Nav.scss";
 
 const Nav = () => {
   return (
-    <div>
+    <div className="app-main-nav">
       <ul>
         <li>
-          <NavLink to="/">Start</NavLink>
+          <NavLink to="/">
+            <p>Start</p>
+          </NavLink>
         </li>
         <li>
-          <NavLink to="/bmi">Oblicz BMI</NavLink>
+          <NavLink to="/bmi">
+            <p>BMI</p>
+          </NavLink>
         </li>
         <li>
-          <NavLink to="/contact">Kontakt</NavLink>
+          <NavLink to="/contact">
+            <p>Kontakt</p>
+          </NavLink>
         </li>
         <li>
-          <NavLink to="exit">Exit</NavLink>
+          <NavLink to="exit">
+            <p>Exit</p>
+          </NavLink>
         </li>
       </ul>
     </div>

@@ -1,0 +1,31 @@
+.app-main-nav {
+  background-color: black;
+  color: white;
+  border-radius: 50px;
+  height: 80px;
+
+  ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    padding: 0 70px;
+
+    li {
+      flex-grow: 1;
+      a {
+        height: 80px;
+        font-size: 25px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-bottom: 10px black solid;
+        color: white;
+        text-decoration: none;
+      }
+      a:hover {
+        border-bottom-color: blue;
+      }
+    }
+  }
+}
