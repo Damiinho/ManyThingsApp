@@ -1,18 +1,29 @@
 .app-main-bmi__container {
   margin-top: 50px;
-  background-color: gray;
+  // background-color: gray;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 
-  h1 {
-    font-size: 50px;
+  .app-main-bmi__title {
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    h1 {
+      font-size: 50px;
+    }
+    p {
+      text-align: center;
+    }
   }
   form {
     margin-top: 20px;
     display: flex;
     flex-direction: column;
+    // align-items: center;
     div {
       width: 300px;
       display: flex;
@@ -33,6 +44,15 @@
       }
     }
     button {
+      background-color: lightgray;
+      width: 260px;
+      height: 40px;
+      border-radius: 30px;
+      border-color: red;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: lightblue;
     }
   }
 }

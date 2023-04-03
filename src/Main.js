@@ -6,7 +6,8 @@ const Main = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/bmi" element={<BMI />} />
+      <Route exact path="/bmi" element={<BMI />} />
+      <Route path="/bmi/:height/:weight" element={<BMI />} />
     </Routes>
   );
 };

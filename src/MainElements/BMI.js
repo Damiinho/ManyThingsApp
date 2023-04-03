@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./BMI.scss";
 
 const BMI = () => {
@@ -6,6 +7,7 @@ const BMI = () => {
   const [weight, setWeight] = useState("");
   const [enterHeight, setEnterHeight] = useState("");
   const [enterWeight, setEnterWeight] = useState("");
+  const navigate = useNavigate();
 
   const handleHeight = (e) => {
     setHeight(e.target.value);
@@ -23,6 +25,7 @@ const BMI = () => {
       setEnterWeight(weight);
       setHeight("");
       setWeight("");
+      navigate(`/bmi/${height}/${weight}`);
     } else {
       alert("uzupełnij wszystko");
     }
@@ -67,8 +70,14 @@ const BMI = () => {
   const ResultPanel = () => {
     return (
       <>
-        <div>
-          Wynik (wzrost: {enterHeight} m, waga: {enterWeight} kg): {result}
+        <div className="app-main-bmi__result">
+          <div>
+            <p>Twoje BMI:</p>
+            <p>{result}</p>
+          </div>
+          <div>
+            Wyliczono dla wzrostu {enterHeight} m i wagi {enterWeight} kg
+          </div>
         </div>
         <ResultDescription />
       </>
@@ -76,12 +85,17 @@ const BMI = () => {
   };
 
   const Formula = () => {
-    return <div>Wzór na BMI: BMI =(masa ciała [kg])/(wzrost ^2 [m]) </div>;
+    return (
+      <>
+        <div>Wzór na BMI</div>
+        <div>Wzór na BMI: BMI =(masa ciała [kg])/(wzrost ^2 [m]) </div>
+      </>
+    );
   };
 
   const LegendPanel = () => (
     <div>
-      Legenda:
+      <p>Legenda:</p>
       <ul>
         <li>poniżej 16 – wygłodzenie</li>
         <li>16 – 16.99 – wychudzenie</li>
@@ -97,11 +111,13 @@ const BMI = () => {
 
   return (
     <div className="app-main-bmi__container">
-      <h1>Oblicz BMI</h1>
-      <p>
-        Strona pozwala na szybkie wyliczenie swojego BMI, po wpisaniu wyniku
-        wyświetli się także kilka informacji
-      </p>
+      <div className="app-main-bmi__title">
+        <h1>Oblicz BMI</h1>
+        <p>
+          Strona pozwala na szybkie wyliczenie swojego BMI, po wpisaniu wyniku
+          wyświetli się także kilka informacji
+        </p>
+      </div>
       <form onSubmit={handleSubmit}>
         <div>
           <label>
@@ -129,10 +145,10 @@ const BMI = () => {
         </div>
         <button onSubmit={handleSubmit}>Zatwierdź</button>
       </form>
-      <button onClick={handleReset}>Reset</button>
       {enterHeight && <ResultPanel />}
       <Formula />
       <LegendPanel />
+      <button onClick={handleReset}>Reset</button>
     </div>
   );
 };
