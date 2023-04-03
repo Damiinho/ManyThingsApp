@@ -115,8 +115,6 @@ const BMI = () => {
             />{" "}
             cm
           </label>
-        </div>
-        <div>
           <label>
             <input
               type="number"

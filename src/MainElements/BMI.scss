@@ -10,10 +10,16 @@
     font-size: 50px;
   }
   form {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
     div {
+      width: 300px;
+      display: flex;
+      flex-direction: row;
+      margin-bottom: 20px;
       label {
-        width: 100px;
-        height: 40px;
+        padding-right: 10px;
         input {
           text-align: center;
           width: 100px;
@@ -21,9 +27,12 @@
           margin: 5px;
           font-size: 20px;
           line-height: 40px;
-          border: 50px solid blue;
+          border-radius: 30px;
+          border-color: red;
         }
       }
+    }
+    button {
     }
   }
 }
