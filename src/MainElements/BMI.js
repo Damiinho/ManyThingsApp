@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import "./BMI.scss";
 
 const BMI = () => {
@@ -8,6 +8,14 @@ const BMI = () => {
   const [enterHeight, setEnterHeight] = useState("");
   const [enterWeight, setEnterWeight] = useState("");
   const navigate = useNavigate();
+  const { height: urlHeight, weight: urlWeight } = useParams();
+
+  useEffect(() => {
+    if (urlHeight && urlWeight) {
+      setEnterHeight(urlHeight);
+      setEnterWeight(urlWeight);
+    }
+  }, [urlHeight, urlWeight]);
 
   const handleHeight = (e) => {
     setHeight(e.target.value);
@@ -20,8 +28,7 @@ const BMI = () => {
     e.preventDefault();
 
     if (height.length !== 0 && weight.length !== 0) {
-      const newHeight = height / 100;
-      setEnterHeight(newHeight);
+      setEnterHeight(height);
       setEnterWeight(weight);
       setHeight("");
       setWeight("");
@@ -38,7 +45,27 @@ const BMI = () => {
     setWeight("");
   };
 
-  const result = (enterWeight / (enterHeight * enterHeight)).toFixed(2);
+  const result = (
+    enterWeight /
+    ((enterHeight / 100) * (enterHeight / 100))
+  ).toFixed(2);
+
+  let marginResult = 0;
+
+  const functionForMarginResult = () => {
+    if (result < 15) {
+      return (marginResult = 0);
+    }
+    if (result > 15 && result < 35) {
+      const resultForGraph = Math.round((result - 15) * 15);
+
+      return (marginResult = resultForGraph);
+    }
+    if (result > 35) {
+      return (marginResult = 300);
+    }
+  };
+  functionForMarginResult();
 
   const ResultDescription = () => {
     if (result < 16) {
@@ -75,8 +102,14 @@ const BMI = () => {
             <p>Twoje BMI:</p>
             <p>{result}</p>
           </div>
+          <div className="app-main-bmi__result-graph">
+            <div
+              className="app-main-bmi__result-graph-dot"
+              style={{ marginLeft: marginResult }}
+            ></div>
+          </div>
           <div>
-            Wyliczono dla wzrostu {enterHeight} m i wagi {enterWeight} kg
+            Wyliczono dla wzrostu {enterHeight} cm i wagi {enterWeight} kg
           </div>
         </div>
         <ResultDescription />
