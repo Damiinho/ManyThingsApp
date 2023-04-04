@@ -1,6 +1,5 @@
 .app-main-bmi__container {
   margin-top: 50px;
-  // background-color: gray;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -23,7 +22,6 @@
     margin-top: 20px;
     display: flex;
     flex-direction: column;
-    // align-items: center;
     div {
       width: 300px;
       display: flex;
@@ -45,7 +43,6 @@
     }
     button {
       background-color: lightgray;
-      // width: 260px;
       height: 40px;
       border-radius: 30px;
       border-color: red;
