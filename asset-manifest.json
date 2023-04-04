@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/ManyThingsApp/static/css/main.2516cfec.css",
-    "main.js": "/ManyThingsApp/static/js/main.ad699f2f.js",
+    "main.js": "/ManyThingsApp/static/js/main.5fe9a986.js",
     "static/js/787.167d4452.chunk.js": "/ManyThingsApp/static/js/787.167d4452.chunk.js",
     "index.html": "/ManyThingsApp/index.html",
     "main.2516cfec.css.map": "/ManyThingsApp/static/css/main.2516cfec.css.map",
-    "main.ad699f2f.js.map": "/ManyThingsApp/static/js/main.ad699f2f.js.map",
+    "main.5fe9a986.js.map": "/ManyThingsApp/static/js/main.5fe9a986.js.map",
     "787.167d4452.chunk.js.map": "/ManyThingsApp/static/js/787.167d4452.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.2516cfec.css",
-    "static/js/main.ad699f2f.js"
+    "static/js/main.5fe9a986.js"
   ]
 }
