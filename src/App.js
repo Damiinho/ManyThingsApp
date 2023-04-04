@@ -8,7 +8,7 @@ import Footer from "./Footer";
 function App() {
   return (
     <div className="App">
-      <Router>
+      <Router basename={process.env.PUBLIC_RL}>
         <Nav />
         <Main />
         <Footer />
