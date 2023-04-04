@@ -1,15 +1,18 @@
 .app-main-nav {
-  background-color: black;
-  color: white;
-  border-radius: 50px;
+  background: linear-gradient(to bottom, #378de5 5%, #79bbff 100%);
+  // color: white;
+  border-radius: 0 0 50px 50px;
   height: 80px;
+  width: 700px;
+  box-shadow: 1px 2px 6px 0px rgba(42, 42, 42, 0.75);
+  margin: 0 auto;
 
   ul {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-between;
-    padding: 0 70px;
+    padding: 0 30px;
 
     li {
       flex-grow: 1;
@@ -19,9 +22,11 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        border-bottom: 10px black solid;
         color: white;
+        // border-bottom: 10px #7f8ca1 solid;
+        // font-weight: bold;
         text-decoration: none;
+        text-shadow: 3px 3px 7px rgba(66, 68, 90, 1);
       }
       a:hover {
         border-bottom-color: blue;

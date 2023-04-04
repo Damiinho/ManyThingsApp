@@ -1,9 +1,16 @@
 .app-main-bmi__container {
-  margin-top: 50px;
+  padding: 20px 0 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  border-width: 5px;
+  border-style: groove;
+  border-radius: 20px;
+  width: 500px;
+  margin: 50px auto 0;
+  background-color: #fff;
+  box-shadow: 5px 5px 7px 1px rgba(66, 68, 90, 1);
 
   .app-main-bmi__title {
     width: 500px;
@@ -14,43 +21,69 @@
     h1 {
       font-size: 50px;
     }
-    p {
-      text-align: center;
-    }
   }
   form {
     margin-top: 20px;
     display: flex;
     flex-direction: column;
+    width: 400px;
     div {
-      width: 300px;
+      width: 400px;
       display: flex;
       flex-direction: row;
       margin-bottom: 20px;
       label {
-        padding-right: 10px;
+        display: flex;
+        flex-direction: row;
+        // justify-content: space-between;
+        align-items: center;
+        width: 200px;
+        padding-left: 40px;
         input {
           text-align: center;
-          width: 100px;
-          height: 40px;
-          margin: 5px;
-          font-size: 20px;
-          line-height: 40px;
-          border-radius: 30px;
-          border-color: red;
+          padding: 5px;
+          font-size: 15px;
+          border-width: 12px;
+          border-radius: 50px;
+          border-style: groove;
+          background-color: #ffffff;
+          border-color: #79bcff;
+          box-shadow: 4px 6px 6px 0px rgba(42, 42, 42, 0.75);
+        }
+        input:active {
+          outline: none;
+        }
+        p {
+          padding-left: 15px;
         }
       }
     }
     button {
-      background-color: lightgray;
-      height: 40px;
-      border-radius: 30px;
-      border-color: red;
+      box-shadow: inset 0px 1px 0px 0px #bbdaf7;
+      background: linear-gradient(to bottom, #79bbff 5%, #378de5 100%);
+      background-color: #79bbff;
+      border-radius: 20px;
+      border: 1px solid #84bbf3;
+      display: inline-block;
       cursor: pointer;
-      margin-bottom: 20px;
+      color: #ffffff;
+      font-family: Arial;
+      font-size: 23px;
+      font-weight: bold;
+      padding: 14px 0;
+      text-decoration: none;
+      text-shadow: 0px 1px 0px #528ecc;
+      width: 200px;
+      margin: 0 auto;
     }
     button:hover {
       background-color: lightblue;
+      background: linear-gradient(to bottom, #378de5 5%, #79bbff 100%);
+      background-color: #378de5;
+    }
+    button:active {
+      position: relative;
+      top: 1px;
     }
   }
   .app-main-bmi__result {
@@ -70,22 +103,55 @@
     }
     .app-main-bmi__result-graph {
       width: 300px;
-      height: 20px;
+      height: 34px;
+      border: 2px;
+      border-style: groove;
+      border-color: black;
+      border-radius: 10px;
       background: linear-gradient(
         to right,
-        rgb(219, 0, 0) 0%,
-        rgb(0, 175, 0) 17.5%,
-        rgb(0, 175, 0) 50%,
-        rgb(219, 0, 0) 100%
+        #ff8000 0%,
+        #b3ed4c 17.5%,
+        #b3ed4c 50%,
+        #ff7661 100%
       );
-      border-radius: 10px;
       .app-main-bmi__result-graph-dot {
-        height: 20px;
-        width: 20px;
-        background-color: rgb(0, 0, 0);
-        border-radius: 50%;
+        margin-top: 0px;
+        height: 30px;
+        width: 10px;
+        background-color: #fff;
+        border-radius: 10px;
+        border-color: #9ecfff;
+        border-width: 2px;
+        border-style: groove;
         transform: translateX(-50%);
       }
+    }
+    .app-main-bmi__result-details {
+      font-size: 20px;
+    }
+    .app-main-bmi__result-term {
+      font-size: 30px;
+      font-weight: bold;
+    }
+    .app-main-bmi__result-more {
+      font-size: 12px;
+      cursor: pointer;
+    }
+  }
+  .app-main-bmi__result.good {
+    .app-main-bmi__result-term {
+      color: rgb(79, 173, 12);
+    }
+  }
+  .app-main-bmi__result.bad {
+    .app-main-bmi__result-term {
+      color: rgb(173, 12, 12);
+    }
+  }
+  .app-main-bmi__result.ok {
+    .app-main-bmi__result-term {
+      color: rgb(40, 53, 32);
     }
   }
 }

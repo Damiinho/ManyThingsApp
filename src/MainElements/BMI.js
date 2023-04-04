@@ -7,6 +7,8 @@ const BMI = () => {
   const [weight, setWeight] = useState("");
   const [enterHeight, setEnterHeight] = useState("");
   const [enterWeight, setEnterWeight] = useState("");
+  const [classNameForResult, setClassNameForResult] = useState("");
+  const [isMoreInfo, setIsMoreInfo] = useState(false);
   const navigate = useNavigate();
   const { height: urlHeight, weight: urlWeight } = useParams();
 
@@ -38,13 +40,6 @@ const BMI = () => {
     }
   };
 
-  const handleReset = () => {
-    setEnterHeight("");
-    setEnterWeight("");
-    setHeight("");
-    setWeight("");
-  };
-
   const result = (
     enterWeight /
     ((enterHeight / 100) * (enterHeight / 100))
@@ -67,37 +62,97 @@ const BMI = () => {
   };
   functionForMarginResult();
 
+  const handleMoreInfo = () => {
+    setIsMoreInfo(!isMoreInfo);
+  };
+
+  const MoreInfo = () => {
+    return (
+      <div onClick={handleMoreInfo} className="app-main-bmi__result-more">
+        {isMoreInfo ? "(zwiń informacje)" : "(kliknij po więcej informacji)"}
+      </div>
+    );
+  };
+
   const ResultDescription = () => {
     if (result < 16) {
-      return <div>wygłodzenie</div>;
+      setClassNameForResult("bad");
+      return (
+        <>
+          <div className="app-main-bmi__result-term">wygłodzenie</div>
+          <MoreInfo />
+        </>
+      );
     }
     if (result >= 16 && result < 17) {
-      return <div>wychudzenie</div>;
+      setClassNameForResult("bad");
+      return (
+        <>
+          <div className="app-main-bmi__result-term">wychudzenie</div>
+          <MoreInfo />
+        </>
+      );
     }
     if (result >= 17 && result < 18.5) {
-      return <div>niedowaga</div>;
+      setClassNameForResult("ok");
+      return (
+        <>
+          <div className="app-main-bmi__result-term">niedowaga</div>
+          <MoreInfo />
+        </>
+      );
     }
     if (result >= 18.5 && result < 25) {
-      return <div>waga prawidłowa</div>;
+      setClassNameForResult("good");
+      return (
+        <>
+          <div className="app-main-bmi__result-term">waga prawidłowa</div>
+          <MoreInfo />
+        </>
+      );
     }
     if (result >= 25 && result < 30) {
-      return <div>nadwaga</div>;
+      setClassNameForResult("ok");
+      return (
+        <>
+          <div className="app-main-bmi__result-term">nadwaga</div>
+          <MoreInfo />
+        </>
+      );
     }
     if (result >= 30 && result < 35) {
-      return <div>otyłość (stopień I)</div>;
+      setClassNameForResult("bad");
+      return (
+        <>
+          <div className="app-main-bmi__result-term">otyłość (stopień I)</div>
+          <MoreInfo />
+        </>
+      );
     }
     if (result >= 35 && result < 40) {
-      return <div>otyłość (stopień II)</div>;
+      setClassNameForResult("bad");
+      return (
+        <>
+          <div className="app-main-bmi__result-term">otyłość (stopień II)</div>
+          <MoreInfo />
+        </>
+      );
     }
     if (result >= 40) {
-      return <div>otyłość (stopień III)</div>;
+      setClassNameForResult("bad");
+      return (
+        <>
+          <div className="app-main-bmi__result-term">otyłość (stopień III)</div>
+          <MoreInfo />
+        </>
+      );
     }
   };
 
   const ResultPanel = () => {
     return (
       <>
-        <div className="app-main-bmi__result">
+        <div className={`app-main-bmi__result ${classNameForResult}`}>
           <div>
             <p>Twoje BMI:</p>
             <p>{result}</p>
@@ -108,11 +163,11 @@ const BMI = () => {
               style={{ marginLeft: marginResult }}
             ></div>
           </div>
-          <div>
-            Wyliczono dla wzrostu {enterHeight} cm i wagi {enterWeight} kg
+          <div className="app-main-bmi__result-details">
+            Wzrost: {enterHeight} cm, waga: {enterWeight} kg
           </div>
+          <ResultDescription />
         </div>
-        <ResultDescription />
       </>
     );
   };
@@ -146,10 +201,6 @@ const BMI = () => {
     <div className="app-main-bmi__container">
       <div className="app-main-bmi__title">
         <h1>Oblicz BMI</h1>
-        <p>
-          Strona pozwala na szybkie wyliczenie swojego BMI, po wpisaniu wyniku
-          wyświetli się także kilka informacji
-        </p>
       </div>
       <form onSubmit={handleSubmit}>
         <div>
@@ -162,7 +213,7 @@ const BMI = () => {
               value={height}
               onChange={handleHeight}
             />{" "}
-            cm
+            <p>cm</p>
           </label>
           <label>
             <input
@@ -173,15 +224,18 @@ const BMI = () => {
               value={weight}
               onChange={handleWeight}
             />{" "}
-            kg
+            <p>kg</p>
           </label>
         </div>
         <button onSubmit={handleSubmit}>Zatwierdź</button>
       </form>
       {enterHeight && <ResultPanel />}
-      <Formula />
-      <LegendPanel />
-      <button onClick={handleReset}>Reset</button>
+      {isMoreInfo ? (
+        <>
+          <Formula />
+          <LegendPanel />
+        </>
+      ) : null}
     </div>
   );
 };

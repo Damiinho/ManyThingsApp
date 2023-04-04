@@ -6,11 +6,13 @@
 }
 
 body {
-  background-color: rgb(240, 240, 240);
+  // background-color: rgba(156, 175, 233, 1);
+  transition: 1s;
+  height: 100vh;
 }
 
 .App {
   width: 1024px;
   height: auto;
-  margin: 30px auto 0;
+  margin: 0 auto;
 }
